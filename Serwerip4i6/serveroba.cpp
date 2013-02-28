@@ -43,7 +43,6 @@ struct addrinfo *result;
 memset(&hints, 0, sizeof(struct addrinfo)); 
 hints.ai_family = AF_UNSPEC; 
 hints.ai_socktype = SOCK_STREAM; 
-hints.ai_protocol = IPPROTO_TCP; 
 hints.ai_flags = AI_PASSIVE; /* wildcard IP address */ 
 
 // Retrieve each address and print out the hex bytes
@@ -61,7 +60,7 @@ struct sockaddr_storage remoteaddr;
         exit(EXIT_FAILURE);
     }
 
-	 retval = getaddrinfo(NULL, argv[1], &hints, &result); 
+	 retval = getaddrinfo(0, argv[1], &hints, &result); 
   if ( retval != 0 ) {
        fprintf(stderr, "bind() failed with error %d: %s\n",
                         WSAGetLastError(), PrintError(WSAGetLastError()));
@@ -69,15 +68,9 @@ struct sockaddr_storage remoteaddr;
         return 1;
     }
 
-	   if(( sockip6 = socket( AF_INET6, SOCK_STREAM, 0 ) ) == - 1 ) {
-        perror( "socket" );
-        exit( 1 );
-    }
+	
 	     
-    if(( sockip4 = socket( AF_INET, SOCK_STREAM, 0 ) ) == - 1 ) {
-        perror( "socket" );
-        exit( 1 );
-    }
+    
 
 	FD_ZERO( & fd_write ); 
 	FD_ZERO(& master);
@@ -87,9 +80,15 @@ struct sockaddr_storage remoteaddr;
       
 		if(ptr->ai_family == AF_INET)
 		{
-             if( bind( sockip4,( struct sockaddr * ) &  ptr->ai_addr, sizeof(  ptr->ai_addr ) )
-    == - 1 ) {
-        perror( "bind ip4" );
+
+
+			if(( sockip4 = socket( ptr->ai_family, ptr->ai_socktype, 0 ) ) == - 1 ) {
+        perror( "socket" );
+        exit( 1 );
+    }
+			if( bind( sockip4,( struct sockaddr * ) &  ptr->ai_addr,  ptr->ai_addrlen )
+    != 0 ) {
+        printf( "bind ip4 %s \n",ptr->ai_addr );
 		 fprintf(stderr, "lliseb failed with error %d: %s\n",
                         WSAGetLastError(), PrintError(WSAGetLastError()));
         exit( 1 );
@@ -105,18 +104,22 @@ struct sockaddr_storage remoteaddr;
 		}
 		else if(ptr->ai_family == AF_INET6)
 		{
-         if( bind( sockip6,( struct sockaddr * ) &  ptr->ai_addr, sizeof(  ptr->ai_addr ) )
-    == - 1 ) {
-        perror( "bind" );
-		 fprintf(stderr, "bind() failed with error %d: %s\n",
-                        WSAGetLastError(), PrintError(WSAGetLastError()));
+				printf("ip6");
+
+			/*struct sockaddr_in6 * sockaddr_ipv6 = (struct sockaddr_in6 *) ptr->ai_addr;
+			if( bind( sockip6,( struct sockaddr * ) &  sockaddr_ipv6,  sizeof(struct sockaddr_in6))==-1 ) {
+		
+		 fprintf(stderr, "bind()  z     ip6 failed with error %d: %s\n",
+                         WSAGetLastError(), PrintError(WSAGetLastError()));
         exit( 1 );
     }
     
     if( listen( sockip6, BACKLOG ) == - 1 ) {
         perror( "listen" );
+			 fprintf(stderr, "listen ip6 failed with error %d: %s\n",
+                         WSAGetLastError(), PrintError(WSAGetLastError()));
         exit( 1 );
-    }
+    }*/
 			printf("ip6");
 		}      
        
