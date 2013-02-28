@@ -1,0 +1,22 @@
+﻿Build started 2013-02-28 13:29:13.
+     1>Project "C:\Users\Aldor\Dropbox\moje_programy\studia\semestr6\PUS\Lab2\Serwerip6\Serwerip6.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\Serwerip6.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt serwerip6.cpp
+         serwerip6.cpp
+     1>c:\users\aldor\dropbox\moje_programy\studia\semestr6\pus\lab2\serwerip6\serwerip6.cpp(38): warning C4101: 'i' : unreferenced local variable
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Aldor\Dropbox\moje_programy\studia\semestr6\PUS\Lab2\Debug\Serwerip6.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Serwerip6.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Aldor\Dropbox\moje_programy\studia\semestr6\PUS\Lab2\Debug\Serwerip6.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Aldor\Dropbox\moje_programy\studia\semestr6\PUS\Lab2\Debug\Serwerip6.lib" /MACHINE:X86 Debug\serwerip6.obj
+         LINK : C:\Users\Aldor\Dropbox\moje_programy\studia\semestr6\PUS\Lab2\Debug\Serwerip6.exe not found or not built by the last incremental link; performing full link
+         Serwerip6.vcxproj -> C:\Users\Aldor\Dropbox\moje_programy\studia\semestr6\PUS\Lab2\Debug\Serwerip6.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Aldor\Dropbox\moje_programy\studia\semestr6\PUS\Lab2\Debug\Serwerip6.exe;#1" /manifest Debug\Serwerip6.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\Serwerip6.unsuccessfulbuild".
+         Touching "Debug\Serwerip6.lastbuildstate".
+     1>Done Building Project "C:\Users\Aldor\Dropbox\moje_programy\studia\semestr6\PUS\Lab2\Serwerip6\Serwerip6.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.41
